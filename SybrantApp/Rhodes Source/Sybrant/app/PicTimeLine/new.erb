@@ -1,0 +1,25 @@
+<head>
+<title>Sybrant</title>
+</head>
+<div class="toolbar">
+	<h1 id="pageTitle">
+		Manage Photos
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/app"><img class="menu_icon" src="/app/images/home.png" width="24" style="cursor:pointer;"/></a>
+	</h1>
+</div>
+
+<form title="New PicTimeLine" 
+	  class="panel"
+	  id="pictimeline_new_form"
+	  method="POST"
+	  action="" selected="true">
+<div class="panel" selected="true">
+<% @pictimelines.each do |pic| %>
+  <img src = "<%= pic.image %>" width="50" />
+  <input type="hidden" name="pictimeline[image][]" value="<%= pic.image %>" />
+<% end %>
+<br/>
+  <%= link_to '[Choose Picture]', { :action => :edit }%>
+  <input type="submit" value= "Save" />
+</div>
+</form>

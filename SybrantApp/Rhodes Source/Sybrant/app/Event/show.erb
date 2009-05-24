@@ -1,0 +1,84 @@
+<head>
+<title>Sybrant</title>
+</head>
+<div class="toolbar">
+	<h1 id="pageTitle">
+		<%=@event.name%>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/app"><img class="menu_icon" src="/app/images/home.png" width="24" style="cursor:pointer;"/></a>
+	</h1>
+</div>
+
+<div class="panel" selected="true">
+
+<a class="button right_button" href="<%=url_for(:action => :edit, :id => @event.object)%>" target="_self">Edit</a>
+
+
+
+    
+<table class="grid">
+  
+  <tr>
+	<td class="gridleft">EventName</td>
+    <td class="gridright"><%=@event.name%></td>
+  </tr>
+  
+  <tr>
+    <td class="gridleft">EventType</td>
+    <td class="gridright"><%=@event.privacy%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">StartDate</td>
+    <td class="gridright"><%=@event.startdate%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">EndDate</td>
+    <td class="gridright"><%=@event.enddate%></td>
+  </tr>
+ 
+</table>
+<%if @contacts && @contacts.length>0%>
+
+<form title="New Event" 
+	  class="panel"
+	  id="event_new_form" 
+	  method="POST" 
+	  action="http://125.17.111.158:4002/events/send_invitation" selected="true">
+<table class="grid" border="1">
+        <tr>
+            <td>
+            Select
+            </td>
+              <td>
+              contact name
+              </td>
+            <td>
+            email id
+            </td>
+        
+        </tr>
+       <input type="hidden" name="user_id" value="<%=@event.userid%>">
+       <input type="hidden" name="event_id"   value="<%=@event.id%>">
+        <%@contacts.each do |x|%>
+          <%if x[1]['email_address']!=nil%>
+    <tr>
+    <td>
+    <input type="checkbox" name="email_id[]" value="<%=x[1]['email_address']%>">
+    
+    </td>
+    <td>
+    <%=link_to "#{x[1]['first_name']}", :action => :show, :id => x[1]['id']%>
+    </td>
+    <td>
+    <%=link_to "#{x[1]['email_address']}", :action => :show, :id => x[1]['id']%>
+    </td>
+    </tr>
+     <%end%>
+    <%end%>
+        </table>
+    <input type="submit" value="Send Invitation" />    
+   </form>     
+<%end%>
+   
+</div>

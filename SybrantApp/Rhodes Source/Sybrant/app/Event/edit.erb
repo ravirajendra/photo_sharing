@@ -1,0 +1,46 @@
+<head>
+<title>Sybrant</title>
+</head>
+<div class="toolbar">
+	<h1 id="pageTitle">
+		Edit <%=@event.event_name%>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/app"><img class="menu_icon" src="/app/images/home.png" width="24" style="cursor:pointer;"/></a>
+	</h1>
+</div>
+
+<form title="Edit Event" 
+	  class="panel" 
+	  id="event_edit_form" 
+	  method="POST" 
+	  action="<%=url_for(:action => :update)%>" selected="true">
+	<fieldset>
+		<input type="hidden" name="id" value="<%=@event.object%>"/>
+		
+		  <div class="row">
+			  <label><b> Event name: </b> </label>
+			  <input type="text" name="event[name]" value="<%=@event.name%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label><b> Privacy: </b> </label>
+			  <input type="text" name="event[privacy]" value="<%=@event.privacy%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label><b> Start date: </b> (dd/mm/yy) </label>
+			  <input type="text" name="event[startdate]" value="<%=@event.startdate%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label><b> End date: </b> (dd/mm/yy)</label>
+			  <input type="text" name="event[enddate]" value="<%=@event.enddate%>"/>
+		  </div>
+		
+	</fieldset>
+	<input type="submit" value="Update"/>
+	<p align="center">
+		<a href="<%=url_for(:action => :delete, :id => @event.object)%>">
+			<font color="#990000">Delete</font>
+		</a>
+	</p>
+</form>

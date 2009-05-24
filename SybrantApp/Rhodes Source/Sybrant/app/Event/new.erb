@@ -1,0 +1,55 @@
+<head>
+<title>Sybrant</title>
+</head>
+<div class="toolbar">
+	<h1 id="pageTitle">
+		New Event
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/app"><img class="menu_icon" src="/app/images/home.png" width="24" style="cursor:pointer;"/></a>
+	</h1>
+</div>
+
+<form title="New Event" 
+	  class="panel"
+	  id="event_new_form" 
+	  method="POST" 
+	  action="<%=url_for(:action => :create)%>" selected="true">
+	<fieldset>
+		<input type="hidden" name="id" value="<%=@event.object%>"/>
+		
+		  <div class="row">
+			  <label><b>Event name:</b> </label>
+			  <input type="text" name="event[name]"/>
+		  </div>
+		
+		  <div class="row">
+			  <label> <b> Privacy: </b> </label><br/>
+			  <input type="radio" name="event[privacy]" value="Public" checked="true"/> Public
+        <input type="radio" name="event[privacy]" value="Private" /> Private
+		  </div>
+		
+		  <div class="row">
+			  <label><b> Start date: </b>(dd/mm/yy)</label>
+			  <input type="text" name="event[startdate]"/> 
+		  </div>
+		
+		  <div class="row">
+			  <label> <b> End date: </b> (dd/mm/yy)</label>
+			  <input type="text" name="event[enddate]"/>
+		  </div>
+        
+      <div class="row">
+      
+			  <%= link_to '[Choose Picture]', { :action => :choose_picture }%>
+			  
+		  </div>
+      <div class="panel" selected="true">
+        <% @pictimelines.each do |pic| %>
+          <img src = "<%= pic.image %>" width="50" />
+           
+        <% end %>
+      <br/>
+  
+        </div>
+	</fieldset>
+	<center> <input type="submit" value="Create"/> </center>
+</form>

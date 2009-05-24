@@ -1,0 +1,37 @@
+<head>
+<title>Sybrant</title>
+</head>
+<div class="toolbar">
+  <h1 id="pageTitle">
+    Login    
+  </h1>
+</div>
+
+<form title="Login to Rhodes"
+      class="panel" 
+     id="user_edit_form" 
+   method="POST" 
+   action="<%=url_for(:action => 'login_backend_app')%>" selected="true">  
+      
+  
+  <table class="grid">
+    <tr>
+      <td class="gridleft" style="color:#000000">Login index</td>
+      <td class="gridright"><input type="text" name="username"/></td>
+    </tr>    
+  </table>
+ 
+  <p align="center">
+    <input type="submit" value="Login"/><br/>
+    <a href="<%=Rho::RhoConfig.start_path%>" target="_self">Cancel</a>
+  </p>
+ 
+</form>
+
+<%@user.each do |x|%>
+	
+	<li><%=link_to "#{x.name}", :action => :show, :id => x.object%></li>
+	
+	<%end%>
+
+params check <%=session[:user]%>

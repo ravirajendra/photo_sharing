@@ -1,0 +1,42 @@
+<head>
+<title>Sybrant</title>
+</head>
+<div class="toolbar">
+	<h1 id="pageTitle">
+		Contact
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/app"><img class="menu_icon" src="/app/images/home.png" width="24" style="cursor:pointer;"/></a>
+	</h1>
+</div>
+<div id="settings" title="Contact" class="panel">
+  <%= link_to "Edit", {:action => :edit, :id => @contact['id']}, "class=\"button right_button\"" %>		
+  <fieldset>
+    <div class="row">
+      <label><b>First Name: </b></label>
+      <span><%=@contact['first_name']%></span>
+    </div>
+    <div class="row">
+      <label><b>Last Name: </b></label>
+      <span><%=@contact['last_name']%></span>
+    </div>
+    <div class="row">
+      <label><b>Company:</b> </label>
+      <span><%=@contact['company_name']%></span>
+    </div>
+    <div class="row">
+      <label><b>Mobile #: </b></label>
+      <span><%= click_to_call @contact['mobile_number']%></span>
+    </div>
+    <div class="row">
+      <label><b>Home #: </b></label>
+      <span><%= click_to_call @contact['home_number']%></span>
+    </div>
+    <div class="row">
+      <label><b>Business #: </b></label>
+      <span><%= click_to_call @contact['business_number']%></span>
+    </div>
+    <div class="row">
+      <label>Email: </label>
+      <span><%=mailto( @contact['email_address'], truncate(@contact['email_address'], 20) )%></span>
+    </div>
+  </fieldset>
+</div>

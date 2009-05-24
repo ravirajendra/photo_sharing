@@ -1,0 +1,52 @@
+<head>
+<title>Sybrant</title>
+</head>
+<div class="toolbar">
+	<h1 id="pageTitle">
+		Edit Contact
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/app"><img class="menu_icon" src="/app/images/home.png" width="24" style="cursor:pointer;"/></a>
+	</h1>
+</div>
+<form title="Edit Contact"
+   class="panel"
+   id="contact_edit_form"
+   method="POST"
+   action="<%=url_for(:action => :update)%>">
+  <fieldset>
+    <input type="hidden" name="contact[id]" value="<%=@contact['id']%>"/>
+    <div class="row">
+      <label> <b>First Name: </b></label>
+      <input type="text" name="contact[first_name]" value="<%=@contact['first_name']%>"/>
+    </div>
+    <div class="row">
+      <label> <b>Last Name: </b></label>
+      <input type="text" name="contact[last_name]" value="<%=@contact['last_name']%>"/>
+    </div>
+    <div class="row">
+      <label><b>Company: </b></label>
+      <input type="text" name="contact[company_name]" value="<%=@contact['company_name']%>"/>
+    </div>
+    <div class="row">
+      <label><b>Mobile #: </b></label>
+      <input type="text" name="contact[mobile_number]" value="<%=@contact['mobile_number']%>"/>
+    </div>
+    <div class="row">
+      <label><b>Home #: </b></label>
+      <input type="text" name="contact[home_number]" value="<%=@contact['home_number']%>"/>
+    </div>
+    <div class="row">
+      <label><b>Business #: </b></label>
+      <input type="text" name="contact[business_number]" value="<%=@contact['business_number']%>"/>
+    </div>
+    <div class="row">
+      <label><b>Email: </b></label>
+      <input type="text" name="contact[email_address]" value="<%=@contact['email_address']%>"/>
+    </div>
+  </fieldset>
+  <input type="submit" value="Update"/>
+  <div align="center">
+    <a href="<%=url_for(:action => :delete, :id => @contact['id'])%>">
+      <font color="#990000">Delete</font>
+    </a>
+  </div>
+</form>

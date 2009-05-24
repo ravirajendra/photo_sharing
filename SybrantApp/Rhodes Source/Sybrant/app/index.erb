@@ -1,0 +1,43 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<script language="JavaScript">
+		
+if (location.search =='?settings=true') {
+    window.location ='/app/Settings';
+}
+
+</script>
+
+	<head>
+		<title>Sybrant</title>
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+		<style type="text/css" media="screen">@import "/public/js/iui/iui.css"; @import "/shared/css/rho.css";</style>
+	</head>  
+	<body>
+
+<div class="toolbar">
+<h1 id="pageTitle">
+		Sybrant App 
+</h1> 
+</div>
+
+<ul id="home" selected="true" title="Thirdapp">
+<% if SyncEngine::logged_in > 0 %>
+  <li><a href="Event"><img class="menu_icon" src="images/events.gif" width="30"/>Events</a></li>
+  <li><a href="PicTimeLine"><img class="menu_icon" src="images/photo.png" width="30"/>Photos</a></li>
+  <li><a href="Contact"><img class="menu_icon" src="images/users.png" width="30"/>Contacts</a></li>
+  <li><a href="/app/Settings/logout"><img class="menu_icon" src="images/logout.jpg" width="30"/>Logout</a></li>
+<%else%>
+   <li></li>
+   <li><a href="/app/Settings/login"><img class="menu_icon" src="images/login.png" width="30"/>Login</a></li>
+  <li><a href="Login"><img class="menu_icon" src="images/register-account.gif" width="30"/>Create Account</a></li>
+  <li></li>
+<%end%>
+  
+</ul>
+
+</body>
+</html>

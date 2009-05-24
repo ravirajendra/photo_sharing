@@ -1,0 +1,33 @@
+<head>
+<title>Sybrant</title>
+</head>
+<div class="panel" style="height:300px;padding:0">
+
+<div class="toolbar">  
+	<h1 id="pageTitle">New Account</h1>	
+</div>
+
+<form class="panel" id="create_user" method="POST" style="margin-top:0"
+	 action="http://125.17.111.158:4002/login/signup" selected="true">	
+	
+	<% if @msg %>
+	  <p style="color:#ff0000"><%= @msg %></p>
+	<% end %>
+	
+	<fieldset>
+	  <div class="row">
+		  <label>User name:</label>
+		  <input type="text" name="user[login]"/>
+	  </div>
+    <div class="row">
+		  <label>Email:</label><br/>
+		  <input type="text" name="user[email]"/>
+	  </div>
+	  <div class="row">
+		  <label>Password:(min 6 letters)</label>
+		  <input type="password" name="user[password]"/>
+	  </div>
+	</fieldset>
+	<input type="submit" value="Create">
+</form>
+</div>
